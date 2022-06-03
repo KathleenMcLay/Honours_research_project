@@ -9,12 +9,37 @@ WGS Library preparation and sequencing was completed by the Central Analytical R
 
 ## Quality Checking 
 
-Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using fastp v.0.20.0. [(Chen et al. 2018)](https://academic.oup.com/bioinformatics/article/34/17/i884/5093234).
+Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using fastp v.0.20.0 [(Chen et al. 2018)](https://academic.oup.com/bioinformatics/article/34/17/i884/5093234). PolyG tails were trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
 
-PolyG tails trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
+## Indexing Reference Genome
+
+The *Senecio lautus* reference genome (v1.41) was indexed using the BWA v0.7.17 [(Li and Durbin, 2009)](https://academic.oup.com/bioinformatics/article/25/14/1754/225615). index function.
+
 ```
-
+bwa index -a is reference_genome.fasta
+```
 
 ## Aligning and Sorting 
 
+Forward and reverse reads were aligned to the reference genome and read groups were added with BWA-MEM v0.7.13 [(Li and Durbin, 2009)](https://academic.oup.com/bioinformatics/article/25/14/1754/225615) using default parameters. The BAM files were then sorted using Samtools v1.12 [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722). sort function.
+
+```
+bwa mem -t 12 -M -R "@RG\tSM:individual1\tID:individual1\tLB:individual1\tPL:ILLUMINA\tPU:individual1"   
+    reference_genome.fasta 
+    individual1_1.fasta.gz \
+    individual1_2.fasta.gz |
+samtools sort -@ 12 -T individual1 -o individual1_sorted.bam
+
+```
+
 ## Cleaning BAMS
+
+The sorted Bam files for each individual were cleaned with picard v2.27.2 [Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
+
+```
+java -Xmx2g -jar picard.jar CleanSam 
+    INPUT=individual1_sorted.bam 
+    OUTPUT=individual1_clean.sorted.bam
+```
+
+###Marking PCR Duplicates 
