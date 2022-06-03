@@ -7,10 +7,10 @@ WGS Library preparation and sequencing was completed by the Central Analytical R
 
 # Bioinformatics  
 
-##Quality Checking 
+## Quality Checking 
 
 Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using fastp v.0.20.0. PolyG tails trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
 
-##Aligning and Sorting 
+## Aligning and Sorting 
 
-##Cleaning BAMS
+## Cleaning BAMS
