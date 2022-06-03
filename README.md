@@ -37,8 +37,8 @@ The sorted Bam files for each individual were cleaned with picard v2.27.2 [Broad
 
 ```
 java -Xmx2g -jar picard.jar CleanSam \
-    INPUT=individual1_sorted.bam \
-    OUTPUT=individual1_clean.sorted.bam
+        INPUT=individual1_sorted.bam \
+        OUTPUT=individual1_clean.sorted.bam
 ```
 
 ### Marking PCR Duplicates 
