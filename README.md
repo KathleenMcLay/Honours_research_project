@@ -9,11 +9,11 @@ WGS Library preparation and sequencing was completed by the Central Analytical R
 
 ## Quality Checking 
 
-Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using fastp v.0.20.0 [(Chen et al. 2018)](https://academic.oup.com/bioinformatics/article/34/17/i884/5093234). PolyG tails were trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
+Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using ```fastp v.0.20.0``` [(Chen et al. 2018)](https://academic.oup.com/bioinformatics/article/34/17/i884/5093234). PolyG tails were trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
 
 ## Indexing Reference Genome
 
-The *Senecio lautus* reference genome (v1.41) was indexed using the BWA v0.7.17 [(Li and Durbin, 2009)](https://academic.oup.com/bioinformatics/article/25/14/1754/225615). index function.
+The *Senecio lautus* reference genome (v1.41) was indexed using the ```BWA v0.7.17``` [(Li and Durbin, 2009)](https://academic.oup.com/bioinformatics/article/25/14/1754/225615). index function.
 
 ```
 bwa index -a is reference_genome.fasta
@@ -21,7 +21,7 @@ bwa index -a is reference_genome.fasta
 
 ## Aligning and Sorting 
 
-Forward and reverse reads were aligned to the reference genome and read groups were added with BWA-MEM v0.7.13 using default parameters. The BAM files were then sorted using Samtools v1.12 [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722). sort function.
+Forward and reverse reads were aligned to the reference genome and read groups were added with ```BWA-MEM v0.7.13``` using default parameters. The BAM files were then sorted using ```Samtools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722). sort function.
 
 ```
 bwa mem -t 12 -M -R "@RG\tSM:individual1\tID:individual1\tLB:individual1\tPL:ILLUMINA\tPU:individual1" \  
@@ -43,7 +43,7 @@ java -Xmx2g -jar picard.jar CleanSam \
 
 ### Marking PCR Duplicates 
 
-PCR duplicates were marked for removal with Picard v2.27.2 MarkDuplicates using default parameters on a sorted file. 
+PCR duplicates were marked for removal with ```Picard v2.27.2``` MarkDuplicates using default parameters on a sorted file. 
 
 ```
 java -XX:ConcGCThreads=1 -XX:ParallelGCThreads=1 -Xmx4g -jar picard.jar MarkDuplicates \
@@ -59,7 +59,7 @@ java -XX:ConcGCThreads=1 -XX:ParallelGCThreads=1 -Xmx4g -jar picard.jar MarkDupl
 
 ### Indexing BAMS 
 
-BAM files with PCR duplicates marked were indexed using Samtools v1.12 index.
+BAM files with PCR duplicates marked were indexed using ```Samtools v1.12``` index.
 
 ```
 samtools index individual1_PCRmrkd.clean.sorted.bam
@@ -67,7 +67,7 @@ samtools index individual1_PCRmrkd.clean.sorted.bam
 
 ### Realigning around Indels 
 
-Picard v2.27.2 CreateSequenceDictionary was used to create a dictionary file of the *Senecio lautus* reference genome (v1.41)
+```Picard v2.27.2``` CreateSequenceDictionary was used to create a dictionary file of the *Senecio lautus* reference genome (v1.41)
 
 ```
 java -jar picard.jar CreateSequenceDictionary \
@@ -75,13 +75,13 @@ java -jar picard.jar CreateSequenceDictionary \
         O=reference_genome.dict
 ```
 
-The *Senecio lautus* reference genome (1.41) was indexed with Samtools v1.12 index. 
+The *Senecio lautus* reference genome (1.41) was indexed with ```Samtools v1.12``` index. 
 
 ```
 samtools faidx reference_genome.fasta
 ```
 
-Targets for realignment were identified using GATK v4.2 [(Van der Auwera and O'Connor, 2020)](https://www.oreilly.com/library/view/genomics-in-the/9781491975183/) RealignerTargetCreator.
+Targets for realignment were identified using ```GATK v4.2``` [(Van der Auwera and O'Connor, 2020)](https://www.oreilly.com/library/view/genomics-in-the/9781491975183/) RealignerTargetCreator.
 
 ```
 java -jar GenomeAnalysisTK.jar \
@@ -92,7 +92,7 @@ java -jar GenomeAnalysisTK.jar \
         -o individual1.intervals
 ```
 
-The realignment was then performed with GATK v4.2 IndelRealigner, using the targets for realignment, dictionary reference genome file, and reference files. 
+The realignment was then performed with ```GATK v4.2``` IndelRealigner, using the targets for realignment, dictionary reference genome file, and reference files. 
 
 ```
 java -jar GenomeAnalysisTK.jar \
@@ -105,7 +105,7 @@ java -jar GenomeAnalysisTK.jar \
 
 ### Index final BAM files
 
-The final BAM files were indexed using Samtools v1.12 index.
+The final BAM files were indexed using ```Samtools v1.12``` index.
 
 ```
 samtools index individual1_realigned.PCRmrkd.clean.sorted.bam
