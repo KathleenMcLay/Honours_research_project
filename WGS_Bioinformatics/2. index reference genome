@@ -1,0 +1,19 @@
+#!/bin/bash -l
+#PBS -N WGS_ALIGN #Job name
+#PBS -l walltime=01:00:00 #job duration
+#PBS -l ncpus=1 #number of cores 
+#PBS -l mem=16GB #memory required 
+#PBS -o job_output.out #puts an output file into the current directory (use to view duration and memory used)
+#PBS -l storage=scratch/ht96+gdata/ht96 #mount the drives with files used in the command script 
+
+#file path to the script for the job (this file contains script from lines 12-19 below) 
+/home/564/km6006/Scripts/index_ref.sh
+
+#STEP 2: INDEX REFERENCE GENOME - BWA
+#does not need to be run in parallel
+
+#load bwa 
+module load bwa
+
+#index the reference genome using 'bwa index'
+bwa index -a is /scratch/ht96/km6006/Ref_Genome/SLv141Asm_Ch20RN.fasta
