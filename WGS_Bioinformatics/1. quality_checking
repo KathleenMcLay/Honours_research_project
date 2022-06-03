@@ -1,3 +1,17 @@
+#!/bin/bash -l
+#PBS -N WGS_QUALITY #Job name
+#PBS -l walltime=03:00:00 #job duration (actual duration 2 hrs 13m)
+#PBS -l ncpus=8 #number of cores 
+#PBS -l mem=90GB #memory required (actual mem 83GB)
+#PBS -o job_output.out #puts an output file into the current directory (use to view duration and memory used)
+#PBS -l storage=scratch/ht96+gdata/ht96 #mount the drives containing files used in the command script
+
+#load gnu parallel
+module load parallel 
+
+#set a parallel job w/ 8 CPUs. The input is a text file with the file path to the command script at index zero (0) and the identifier for each individual at index one (1).
+parallel --jobs 8 < /home/564/km6006/Scripts/quality.txt 
+
 #STEP 1: QUALITY CHECKING  - Fastp
 
 #load fastp 
