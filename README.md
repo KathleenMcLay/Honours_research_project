@@ -33,7 +33,7 @@ samtools sort -@ 12 -T individual1 -o individual1_sorted.bam
 
 ## Cleaning BAMS
 
-The sorted Bam files for each individual were cleaned with picard v2.27.2 [Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
+The sorted Bam files for each individual were cleaned with ```picard v2.27.2``` [Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
 
 ```
 java -Xmx2g -jar picard.jar CleanSam \
