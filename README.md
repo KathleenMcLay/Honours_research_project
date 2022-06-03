@@ -6,5 +6,11 @@ DNA was extracted for Whole Genome Sequencing (WGS) using the [DNeasy Plant Pro 
 WGS Library preparation and sequencing was completed by the Central Analytical Research Facility (CARF) at Queensland University of Technology (QUT).
 
 # Bioinformatics  
-...
-Formatting syntax: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+
+##Quality Checking 
+
+Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using fastp v.0.20.0. PolyG tails trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
+
+##Aligning and Sorting 
+
+##Cleaning BAMS
