@@ -16,7 +16,7 @@ Two FASTQ files were received for each individual containing the forward and rev
 The *Senecio lautus* reference genome (v1.41) was indexed using the ```BWA v0.7.17``` [(Li and Durbin, 2009)](https://academic.oup.com/bioinformatics/article/25/14/1754/225615). index function.
 
 ```
-bwa index -a is reference_genome.fasta
+bwa index -a bwtsw reference_genome.fasta
 ```
 
 ## Aligning and Sorting 
