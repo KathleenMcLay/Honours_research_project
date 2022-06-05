@@ -13,7 +13,7 @@ Two FASTQ files were received for each individual containing the forward and rev
 
 ## Indexing Reference Genome
 
-The *Senecio lautus* reference genome (v1.41) was indexed using the ```BWA v0.7.17``` [(Li and Durbin, 2009)](https://academic.oup.com/bioinformatics/article/25/14/1754/225615). index function.
+The *Senecio lautus* reference genome (v1.41) was indexed using the ```BWA v0.7.17``` [(Li and Durbin, 2009)](https://academic.oup.com/bioinformatics/article/25/14/1754/225615) index function.
 
 ```
 bwa index -a bwtsw reference_genome.fasta
@@ -21,7 +21,7 @@ bwa index -a bwtsw reference_genome.fasta
 
 ## Aligning and Sorting 
 
-Forward and reverse reads were aligned to the reference genome and read groups were added with ```BWA-MEM v0.7.13``` using default parameters. The BAM files were then sorted using ```Samtools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722). sort function.
+Forward and reverse reads were aligned to the reference genome and read groups were added with ```BWA-MEM v0.7.13``` using default parameters. The BAM files were then sorted using ```Samtools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722) sort function.
 
 ```
 bwa mem -t 12 -M -R "@RG\tSM:individual1\tID:individual1\tLB:individual1\tPL:ILLUMINA\tPU:individual1" \  
