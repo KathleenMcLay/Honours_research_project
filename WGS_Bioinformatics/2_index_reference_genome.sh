@@ -5,4 +5,4 @@
 module load bwa
 
 #index the reference genome using 'bwa index'
-bwa index -a is /scratch/ht96/km6006/Ref_Genome/SLv141Asm_Ch20RN.fasta
+bwa index -a bwtsw /scratch/ht96/km6006/Ref_Genome/SLv141Asm_Ch20RN.fasta
