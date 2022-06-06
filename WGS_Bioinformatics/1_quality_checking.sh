@@ -4,7 +4,7 @@
 module load fastp
 
 #create a variable for the directory where you'll save your output
-OUTPUTDIR="/scratch/ht96/km6006/WGS_output"
+OUTPUTDIR="/scratch/ht96/km6006/WGS_output/quality_checking"
 
 #create a variable each for your forward read and reverse read files 
 INPONE="/g/data/ht96/McLay_UQ/Honours/Raw_data/WGS/${1}_R1.fastq.gz"
