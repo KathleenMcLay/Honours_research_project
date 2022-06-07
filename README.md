@@ -84,7 +84,7 @@ samtools faidx reference_genome.fasta
 Targets for realignment were identified using ```GATK v3.8``` [(Van der Auwera and O'Connor, 2020)](https://www.oreilly.com/library/view/genomics-in-the/9781491975183/) RealignerTargetCreator.
 
 ```
-java -jar GenomeAnalysisTK.jar \
+java -jar GenomeAnalysisTK.jar 
         -T RealignerTargetCreator \
         -R reference_genome.fasta \
         -I individual1_PCRmrkd.clean.sorted.bam \
@@ -95,7 +95,7 @@ java -jar GenomeAnalysisTK.jar \
 The realignment was then performed with ```GATK v3.8``` IndelRealigner, using the targets for realignment, dictionary reference genome file, and reference files. 
 
 ```
-java -jar GenomeAnalysisTK.jar \
+java -jar GenomeAnalysisTK.jar 
         -T IndelRealigner \
         -R reference_genome.fasta \
         -I individual1_PCRmrkd.clean.sorted.bam \
@@ -103,7 +103,7 @@ java -jar GenomeAnalysisTK.jar \
         -o individual1_realigned.PCRmrkd.clean.sorted.bam
 ```
 
-### Index final BAM files
+### Indexing final BAM files
 
 The final BAM files were indexed using ```Samtools v1.12``` index.
 
