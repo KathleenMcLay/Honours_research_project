@@ -3,10 +3,10 @@
 module load bwa
 module load samtools
 
-#create a variable for the directory where you'll save your output
+#create a variable for the output directory
 OUTPUTDIR="/scratch/ht96/km6006/WGS_output/align/"
 
-#Create input variables for forward and reverse read files
+#Create variables for forward and reverse read files
 BWAONE="/g/data/ht96/McLay_UQ/Honours/Output/WGS/quality_control/${1}_R1_trimmed.fastq.gz"
 BWATWO="/g/data/ht96/McLay_UQ/Honours/Output/WGS/quality_control/${1}_R2_trimmed.fastq.gz"
 

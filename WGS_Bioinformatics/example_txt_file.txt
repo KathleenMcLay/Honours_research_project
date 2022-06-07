@@ -1,0 +1,8 @@
+/home/564/km6006/Scripts/3_align_and_sort.sh D1
+/home/564/km6006/Scripts/3_align_and_sort.sh H1
+/home/564/km6006/Scripts/3_align_and_sort.sh A3
+/home/564/km6006/Scripts/3_align_and_sort.sh A7
+/home/564/km6006/Scripts/3_align_and_sort.sh W2
+/home/564/km6006/Scripts/3_align_and_sort.sh T1
+/home/564/km6006/Scripts/3_align_and_sort.sh D4
+/home/564/km6006/Scripts/3_align_and_sort.sh H5

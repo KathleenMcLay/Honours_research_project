@@ -1,9 +1,8 @@
 #STEP 1: QUALITY CHECKING  - Fastp
 
-#load fastp 
 module load fastp
 
-#create a variable for the directory where you'll save your output
+#create a variable for the output directory
 OUTPUTDIR="/scratch/ht96/km6006/WGS_output/quality_checking"
 
 #create a variable each for your forward read and reverse read files 
