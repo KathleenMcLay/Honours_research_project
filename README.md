@@ -81,7 +81,7 @@ The *Senecio lautus* reference genome (1.41) was indexed with ```Samtools v1.12`
 samtools faidx reference_genome.fasta
 ```
 
-Targets for realignment were identified using ```GATK v3.8``` [(Van der Auwera and O'Connor, 2020)](https://www.oreilly.com/library/view/genomics-in-the/9781491975183/) RealignerTargetCreator.
+Targets for realignment were identified using ```GATK v3.8.1``` [(Van der Auwera and O'Connor, 2020)](https://www.oreilly.com/library/view/genomics-in-the/9781491975183/) RealignerTargetCreator.
 
 ```
 java -jar GenomeAnalysisTK.jar 
@@ -92,7 +92,7 @@ java -jar GenomeAnalysisTK.jar
         -o individual1.intervals
 ```
 
-The realignment was then performed with ```GATK v3.8``` IndelRealigner, using the targets for realignment, dictionary reference genome file, and reference files. 
+The realignment was then performed with ```GATK v3.8.1``` IndelRealigner, using the targets for realignment, dictionary reference genome file, and reference files. 
 
 ```
 java -jar GenomeAnalysisTK.jar 
