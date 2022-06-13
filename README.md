@@ -47,6 +47,8 @@ samtools sort -@ 12 -T individual1 -o individual1_sorted.bam
 
 ## Cleaning BAMS
 
+### Basic Cleaning 
+
 The sorted Bam files for each individual were cleaned with ```picard v2.27.2``` [Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
 
 ```
@@ -71,7 +73,7 @@ java -XX:ConcGCThreads=1 -XX:ParallelGCThreads=1 -Xmx4g -jar picard.jar MarkDupl
         METRICS_FILE=individual1_PCRmrkd.clean.sorted.metrics
 ```
 
-### Indexing final BAM files 
+## Indexing final BAM files 
 
 BAM files with PCR duplicates marked were indexed using ```Samtools v1.12``` index.
 
