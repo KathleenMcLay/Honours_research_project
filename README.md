@@ -49,7 +49,7 @@ samtools sort -@ 12 -T individual1 -o individual1_sorted.bam
 
 ### Basic Cleaning 
 
-The sorted Bam files for each individual were cleaned with ```picard v2.27.2``` [Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
+The sorted Bam files for each individual were cleaned with ```picard v2.27.2``` [(Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
 
 ```
 java -Xmx2g -jar picard.jar CleanSam \
@@ -79,4 +79,16 @@ BAM files with PCR duplicates marked were indexed using ```Samtools v1.12``` ind
 
 ```
 samtools index individual1_PCRmrkd.clean.sorted.bam
+```
+
+# Identifying Variants 
+
+Variant calling was performed using ```GATK 4.2.5``` [(DePristo 2011)](https://www.nature.com/articles/ng.806) HaplotypeCaller for all sites, regardless of variation from the Reference genome. 
+
+```
+gatk --java-options "-Xmx4g" HaplotypeCaller  \
+-R reference.fasta \
+-I individual1.bam \
+-ERC GVCF \
+-O individual1.g.vcf.gz
 ```
