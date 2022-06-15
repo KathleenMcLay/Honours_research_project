@@ -83,7 +83,7 @@ samtools index individual1_PCRmrkd.clean.sorted.bam
 
 # Identifying Variants 
 
-Variant calling was performed using ```GATK 4.2.5``` [(DePristo 2011)](https://www.nature.com/articles/ng.806) HaplotypeCaller for all sites, regardless of variation from the Reference genome. 
+Variant calling was performed using ```GATK 4.2.5``` [(Poplin 2017)](https://www.biorxiv.org/content/10.1101/201178v3) HaplotypeCaller for all sites, regardless of variation from the Reference genome. 
 
 ```
 gatk --java-options "-Xmx4g" HaplotypeCaller  \
