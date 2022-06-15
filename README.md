@@ -45,7 +45,7 @@ bwa mem -t 12 -M -R "@RG\tSM:individual1\tID:individual1\tLB:individual1\tPL:ILL
 samtools sort -@ 12 -T individual1 -o individual1_sorted.bam
 ```
 
-## Cleaning BAMS
+## Cleaning BAM files
 
 ### Basic Cleaning 
 
