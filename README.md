@@ -19,7 +19,7 @@ fastp \
 -q 10 -u 50 -l 50 -h
 ```
 
-Basic quality control reports were run using ```fastQC v0.11.7'' [(Andrews 2010)](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). 
+Basic quality control reports were run using ```fastQC v0.11.7``` [(Andrews 2010)](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). 
 
 ```
 fastqc individual1_1.fasta.gz individual1_2.fasta.gz
