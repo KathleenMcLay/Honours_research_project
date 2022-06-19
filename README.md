@@ -90,5 +90,7 @@ gatk --java-options "-Xmx4g" HaplotypeCaller  \
 -R reference.fasta \
 -I individual1.bam \
 -ERC GVCF \
--O individual1.g.vcf.gz
+-O individual1_chromosome1.g.vcf.gz
+-native-pair-hmm-threads 48 \
+-intervals $chromosome 
 ```
