@@ -1,4 +1,4 @@
-#STEP 1: QUALITY CHECKING  - Fastp
+#STEP 1.0: QUALITY CHECKING - Fastp
 
 module load fastp
 
