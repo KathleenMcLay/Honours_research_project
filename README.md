@@ -86,11 +86,10 @@ samtools index individual1_PCRmrkd.clean.sorted.bam
 Variant calling was performed using ```GATK 4.2.5``` [(Poplin 2017)](https://www.biorxiv.org/content/10.1101/201178v3) HaplotypeCaller for all sites, regardless of variation from the Reference genome. 
 
 ```
-gatk --java-options "-Xmx4g" HaplotypeCaller  \
--R reference.fasta \
--I individual1.bam \
--ERC GVCF \
--O individual1_chromosome1.g.vcf.gz
--native-pair-hmm-threads 48 \
--intervals $chromosome 
+gatk --java-options "-Xmx8g" HaplotypeCaller 
+--input individual1.bam 
+--output individual1.vcf.gz 
+--reference reference.fasta 
+--emit-ref-confidence GVCF 
+--intervals $chromosome 
 ```
