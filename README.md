@@ -83,6 +83,25 @@ samtools index individual1_PCRmrkd.clean.sorted.bam
 
 # Identifying Variants 
 
+## Indexing Reference Genome 
+
+The reference genome was indexed using ```Samtools v1.12``` faidx function. 
+
+```
+samtools faidx reference.fasta
+```
+
+## Creating Reference Dictionary file 
+
+A dictionary file for the reference genome was created using ```Picard v2.27.2``` CreateSequenceDictionary. 
+
+```
+java -jar /home/564/km6006/picard.jar CreateSequenceDictionary \
+R=reference.fasta \
+O=reference.dict \
+```
+
+## Variant Calling 
 Variant calling was performed using ```GATK 4.2.5``` [(Poplin 2017)](https://www.biorxiv.org/content/10.1101/201178v3) HaplotypeCaller for all sites, regardless of variation from the Reference genome. 
 
 ```
