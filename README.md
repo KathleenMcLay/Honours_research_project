@@ -112,6 +112,7 @@ gatk --java-options "-Xmx8g" HaplotypeCaller \
 --emit-ref-confidence GVCF \
 --intervals $chromosome 
 ```
+
 After variant calling individual chromosome VCF files were concatanated using ```bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722)
 
 ```
