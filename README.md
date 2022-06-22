@@ -113,11 +113,18 @@ gatk --java-options "-Xmx8g" HaplotypeCaller \
 --intervals $chromosome 
 ```
 
-After variant calling individual chromosome VCF files were concatanated using ```bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722)
+After variant calling individual chromosome VCF files were concatanated using ```bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722).
 
 ```
 bcftools concat \
 --threads 6 \
 individual1_chr1.vcf.gz...individual1_chr20.vcf.gz \
 --output individual1_concat.vcf.gz
+```
+New index files were created for each concatenated VCF file using ```GATK v4.2.5``` IndexFeatureFile. 
+
+```
+gatk IndexFeatureFile \
+--input individual1_concat.vcf.gz \
+--output individual1_concat.vcf.gz.tbi
 ```
