@@ -128,3 +128,14 @@ gatk IndexFeatureFile \
 --input individual1_concat.vcf.gz \
 --output individual1_concat.vcf.gz.tbi
 ```
+
+#SNP Filtering 
+
+VCF Files for each individual were combined using ```GATK v4.2.5```CombineGVCFs. 
+
+```
+gatk CombineGVCFs \
+--reference reference.fasta \
+--variant individual1_concat.vcf.gz...individual8_concat.vcf.gz \
+--output all_individuals.vcf.gz
+```
