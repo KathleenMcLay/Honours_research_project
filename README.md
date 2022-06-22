@@ -98,7 +98,7 @@ A dictionary file for the reference genome was created using ```Picard v2.27.2``
 ```
 java -jar /home/564/km6006/picard.jar CreateSequenceDictionary \
 R=reference.fasta \
-O=reference.dict \
+O=reference.dict 
 ```
 
 ## Variant Calling 
