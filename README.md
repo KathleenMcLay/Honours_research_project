@@ -102,7 +102,7 @@ O=reference.dict \
 ```
 
 ## Variant Calling 
-Variant calling was performed using ```GATK 4.2.5``` [(Poplin 2017)](https://www.biorxiv.org/content/10.1101/201178v3) HaplotypeCaller for all sites, regardless of variation from the Reference genome. 
+Variant calling was performed using ```GATK v4.2.5``` [(Poplin 2017)](https://www.biorxiv.org/content/10.1101/201178v3) HaplotypeCaller for all sites, regardless of variation from the Reference genome. 
 
 ```
 gatk --java-options "-Xmx8g" HaplotypeCaller 
@@ -111,4 +111,12 @@ gatk --java-options "-Xmx8g" HaplotypeCaller
 --reference reference.fasta 
 --emit-ref-confidence GVCF 
 --intervals $chromosome 
+```
+After variant calling individual chromosome VCF files were concatanated using ```bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722)
+
+```
+bcftools concat \
+--threads 6 \
+individual1_chr1.vcf.gz...individual1_chr20.vcf.gz \
+--output individual1_concat.vcf.gz
 ```
