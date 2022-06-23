@@ -113,7 +113,7 @@ gatk --java-options "-Xmx8g" HaplotypeCaller \
 --intervals $chromosome 
 ```
 
-After variant calling individual chromosome VCF files were concatanated using ```bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722).
+After variant calling individual chromosome VCF files were concatanated using ```bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722) concat function.
 
 ```
 bcftools concat \
@@ -131,11 +131,12 @@ gatk IndexFeatureFile \
 
 # SNP Filtering 
 
-VCF Files for each individual were first combined using ```GATK v4.2.5``` CombineGVCFs. 
+VCF files for each individual were first combined using ```bcftools v1.12``` merge. 
 
 ```
-gatk CombineGVCFs \
---reference reference.fasta \
---variant individual1_concat.vcf.gz...individual8_concat.vcf.gz \
---output all_individuals.vcf.gz
+bcftools merge \
+--threads 6 \
+indvidual1_concat.vcf.gz...indvidual8_concat.vcf.gz \
+--output all_individuals.vcf.gz \
+--gvcf reference.fasta
 ```
