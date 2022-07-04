@@ -140,3 +140,28 @@ indvidual1_concat.vcf.gz...indvidual8_concat.vcf.gz \
 --output all_individuals.vcf.gz \
 --gvcf reference.fasta
 ```
+
+Using ```VCFtools v0.1.17``` we removed any sites with a quality score less than 20. 
+
+```
+vcftools --gzvcf all.individuals.vcf.gz --minQ 20 --recode --recode-INFO-all --stdout | gzip -c > 1_Q_score_filter_20.vcf.gz
+```
+
+We then removed genotype data for individual samples with less than 10 reads using ```VCFtools v0.1.17```. 
+
+```
+vcftools --gzvcf 1_Q_score_filter_20.vcf.gz --minDP 10 --recode --recode-INFO-all --stdout | gzip -c > 2_read_depth_10.vcf.gz
+```
+
+Any sites with less than 50% of individual samples genotyped were removed using ```VCFtools v0.1.17```. 
+
+```
+vcftools --gzvcf 2_read_depth_10.vcf.gz --max-missing 0.5 --recode --recode-INFO-all --stdout | gzip -c > 3_sites_missing_data_50.vcf.gz
+```
+
+As sites with high coverage could indicate multi-copy regions of the genome, these potential paralogues were removed. To do this, we first examined the distribution of mean read depth per site and graphed the distribution in R. 
+
+```
+vcftools --gzvcf 3_sites_missing_data_50.vcf.gz --site-mean-depth --out mean_depth
+```
+
