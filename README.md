@@ -165,3 +165,11 @@ As sites with high coverage could indicate multi-copy regions of the genome, the
 vcftools --gzvcf 3_sites_missing_data_30.vcf.gz --site-mean-depth --out mean_depth
 ```
 
+A number of approaches were reviewed when considering an appropriate mean depth cut off for the data including setting it at d+3*sqrt(d), d=mean depth (a value of 39 for our data), two times the mode (24) and 90th quantile (38). After considering these options along with a visual assessment of the distribution of mena read depths per site, we filtered for a maximum mean depth of 60 for our data using ```VCFtools v0.1.17```.
+
+```
+vcftools --gzvcf 3_sites_missing_data_30.vcf.gz --recode --recode-INFO-all --max-meanDP 60 --out 4_30_max_mean_depth_60
+```
+
+# Local PCA
+
