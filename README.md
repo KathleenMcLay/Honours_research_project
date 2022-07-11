@@ -141,7 +141,7 @@ indvidual1_concat.vcf.gz...indvidual8_concat.vcf.gz \
 --gvcf reference.fasta
 ```
 
-Using ```VCFtools v0.1.17``` we removed any sites with a quality score less than 20. 
+Using ```VCFtools v0.1.17``` [(Danecek et al. 2011)](https://academic.oup.com/bioinformatics/article/27/15/2156/402296) we removed any sites with a quality score less than 20. 
 
 ```
 vcftools --gzvcf all.individuals.vcf.gz --minQ 20 --recode --recode-INFO-all --stdout | gzip -c > 1_Q_score_filter_20.vcf.gz
