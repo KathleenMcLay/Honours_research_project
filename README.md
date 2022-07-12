@@ -9,7 +9,7 @@ WGS Library preparation and sequencing was completed by the Central Analytical R
 
 ## Quality filtering and trimming 
 
-Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using ```fastp v.0.20.0``` [(Chen et al. 2018)](https://academic.oup.com/bioinformatics/article/34/17/i884/5093234). PolyG tails were trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
+Two FASTQ files were received for each individual containing the forward and reverse reads. FASTQ files were quality checked using ```Fastp v.0.20.0``` [(Chen et al. 2018)](https://academic.oup.com/bioinformatics/article/34/17/i884/5093234). PolyG tails were trimmed, illumina adaptors were removed, low quality reads (50% of quality scores <10) were removed as were reads shorter than 50 bp. 
 
 ```
 fastp \
@@ -19,7 +19,7 @@ fastp \
 -q 10 -u 50 -l 50 -h
 ```
 
-Basic quality control reports were run using ```fastQC v0.11.7``` [(Andrews 2010)](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). 
+Basic quality control reports were run using ```FastQC v0.11.7``` [(Andrews 2010)](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). 
 
 ```
 fastqc individual1_1.fasta.gz individual1_2.fasta.gz
@@ -49,7 +49,7 @@ samtools sort -@ 12 -T individual1 -o individual1_sorted.bam
 
 ### Basic Cleaning 
 
-The sorted Bam files for each individual were cleaned with ```picard v2.27.2``` [(Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
+The sorted Bam files for each individual were cleaned with ```Picard v2.27.2``` [(Broad Institute, 2019)](http://broadinstitute.github.io/picard/) CleanSam to softclips alignments outside the reference genome and remove set quality scores for unmapped reads to 0.
 
 ```
 java -Xmx2g -jar picard.jar CleanSam \
@@ -113,7 +113,7 @@ gatk --java-options "-Xmx8g" HaplotypeCaller \
 --intervals $chromosome 
 ```
 
-After variant calling individual chromosome VCF files were concatanated using ```bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722) concat function.
+After variant calling individual chromosome VCF files were concatanated using ```Bcftools v1.12``` [(Danecek et al. 2021)](https://academic.oup.com/gigascience/article/10/2/giab008/6137722) concat function.
 
 ```
 bcftools concat \
@@ -131,7 +131,7 @@ gatk IndexFeatureFile \
 
 # SNP Filtering 
 
-VCF files for each individual were first combined using ```bcftools v1.12``` merge. 
+VCF files for each individual were first combined using ```Bcftools v1.12``` merge. 
 
 ```
 bcftools merge \
