@@ -175,9 +175,13 @@ vcftools --gzvcf 3_sites_missing_data_30.vcf.gz --recode --recode-INFO-all --max
 
 ## Remove individuals 
 
-Create new VCF files with different combinations of individuals...reflecting the different grouping we want to use to find inversions... 
-
 ```
 vcftools --remove-indv W2 --remove-indv T1 --vcf 4_stringent_filter_Q20RD10M100MMD80.vcf --recode --recode-INFO-all --out D1H1D4H5A3A7.vcf
 ```
 note: VCF file 4_100_max_mean_depth_80.vcf has been renamed to 4_stringent_filter_Q20RD10M100MMD80.vcf
+
+## Split the VCF file into individual chromosomes 
+
+```
+
+```
