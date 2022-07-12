@@ -183,5 +183,5 @@ note: VCF file 4_100_max_mean_depth_80.vcf has been renamed to 4_stringent_filte
 ## Split the VCF file into individual chromosomes 
 
 ```
-
+.
 ```
